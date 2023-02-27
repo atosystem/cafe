@@ -19,7 +19,7 @@ module.exports = {
   assetPrefix: assetPrefix,
   basePath: basePath,
   images: {
-    loader: 'imgix',
+    // loader: 'imgix',
     domains: [
             'www.notion.so',
             'notion.so',
