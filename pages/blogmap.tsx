@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { GetStaticProps } from 'next'
-import ReactFlow, { MarkerType, Controls,useNodesState,useEdgesState } from 'reactflow';
+import ReactFlow, { Node, MarkerType, Controls,useNodesState,useEdgesState, Position } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
@@ -83,7 +83,7 @@ export default function CafeGraphPage (props) {
   //   // { id: '3', position: { x: 0, y: 200 }, data: { label: '3' } ,parentNode: '1'},
   // ];
 
-  const initialNodes = headersBlocks.map(
+  const initialNodes: Node[] = headersBlocks.map(
     (x,_index) => {
       const ret = 
         {
@@ -96,8 +96,8 @@ export default function CafeGraphPage (props) {
             'label' : x.title,
           },
           'deletable': false,
-          'sourcePosition' : 'right', 
-          'targetPosition' : 'left'
+          'sourcePosition' :  'right' as Position, 
+          'targetPosition' : 'left' as Position,
         }
         if (_index == 0) {
           ret['type'] = 'input'
