@@ -1,19 +1,15 @@
 import * as React from 'react'
 import { GetStaticProps } from 'next'
-import ReactDOM from 'react-dom';
-import { useEffect, useRef, useState  } from 'react';
-import ReactFlow, { Background, MarkerType, Controls,useNodesState,useEdgesState } from 'reactflow';
+import ReactFlow, { MarkerType, Controls,useNodesState,useEdgesState } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { NotionAPI } from 'notion-client'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
 
 
-const defaultViewport = { x: 0, y: 0 };
+// const defaultViewport = { x: 0, y: 0 };
 
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async (
-  context
 ) => {
   const domain = 'cafe-pied-nu.vercel.app'
 
@@ -151,9 +147,12 @@ export default function CafeGraphPage (props) {
             
   //           }];
   
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+
+  const [nodes, , onNodesChange] = useNodesState(initialNodes);
+  const [edges, , onEdgesChange] = useEdgesState(initialEdges);
   // const api = new NotionAPI() 
   // api.getPage('843eaeeb-a80f-4908-987b-9bf24e44c831').then( (zxc) => {
   //   console.log("asadadd",zxc)
