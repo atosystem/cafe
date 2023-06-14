@@ -83,7 +83,7 @@ export default function CafeGraphPage (props) {
 
   const initialNodes = headersBlocks.map(
     (x,_index) => {
-      let ret = 
+      const ret = 
         {
           'id': x.id,
           'position':{
