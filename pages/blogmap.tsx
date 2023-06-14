@@ -59,7 +59,9 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async (
 
 export default function CafeGraphPage (props) {
 
-  const datablocks = Object.values(props.recordMap.block).map((x)=>(x.value))
+  // const rBlocks = props.recordMap as ExtendedRecordMap
+
+  const datablocks = Object.values(props.recordMap.block).map((x)=>(x['value']))
 
   const headersBlocks = datablocks.filter((x)=>(x.type.includes("header") && x.id !== '11b1fdc3-5977-4694-965c-0a0ff7b26cbe')).map((x)=>(
     
@@ -72,8 +74,8 @@ export default function CafeGraphPage (props) {
 
   // console.log("datablocks",datablocks[0])
   // datablocks = datablocks
-  console.log("datablocks",datablocks)
-  console.log("headersBlocks",headersBlocks)
+  // console.log("datablocks",datablocks)
+  // console.log("headersBlocks",headersBlocks)
 
   // const initialNodes = [
   //   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' },sourcePosition: 'right',},
@@ -95,10 +97,7 @@ export default function CafeGraphPage (props) {
           },
           'deletable': false,
           'sourcePosition' : 'right', 
-          'targetPosition' : 'left',
-          'style':{
-            'size':'50px'
-          }
+          'targetPosition' : 'left'
         }
         if (_index == 0) {
           ret['type'] = 'input'
@@ -110,7 +109,7 @@ export default function CafeGraphPage (props) {
         
     }
   )
-  console.log(initialNodes)
+  // console.log(initialNodes)
   const initialEdges = initialNodes.slice(0,-1).map(
     (_node,_index)=>(
       {
